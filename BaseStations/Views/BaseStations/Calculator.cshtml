@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Калькулятор";
+}
+
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Калькулятор</h1>
+
+    <button id="backButton" class="btn btn-primary">Назад</button>
+</div>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="3">ВВОДИМ координаты указанные в РИЧ:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Lon</td>
+                <td>Lat</td>
+            </tr>
+            <tr>
+                <td>51 47 40</td>
+                <td>55 8 41</td>
+            </tr>
+            <tr>
+                <td>O</td>
+                <td>'</td>
+            </tr>
+            <tr>
+                <td colspan="3">Производим вычисления:</td>
+            </tr>
+            <!-- Здесь вы можете добавить остальные строки таблицы с соответствующими данными -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    document.getElementById("backButton").onclick = function() {
+        history.back();
+    };
+</script>

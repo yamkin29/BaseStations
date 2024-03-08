@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BaseStations.Models.BaseStation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="d-flex justify-content-between align-items-center">
+    <span>Базовые станции</span>
+
+    <div class="ml-lg-4">
+        <a href="@Url.Action("Calculator", "BaseStations")" class="btn btn-primary">Калькулятор</a>
+    </div>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form asp-action="Logout" asp-controller="Account" method="post">
+            <button type="submit" class="btn btn-primary">Выход</button>
+        </form>
+    }    
+</h1>
+
+@using (Html.BeginForm("Search", "BaseStations", FormMethod.Get))
+{
+    <p>
+        Поиск: <input type="text" name="searchString">
+        <input type="submit" value="Поиск" />
+    </p>
+}
+
+<p>
+    <a asp-action="Create">Создать базовую станцию</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Номер
+            </th>
+            <th>
+                Частота
+            </th>
+            <th>
+                Координаты
+            </th>
+            <th>
+                Адрес
+            </th>
+            <th>
+                Оператор
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Frequency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coordinates)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operator)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Подробности</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
