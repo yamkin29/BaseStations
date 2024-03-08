@@ -15,8 +15,7 @@ public class AccountController : Controller
 
     [HttpPost]
     public async Task<IActionResult> Login(string username, string password, string returnUrl = "/")
-    {
-        // Ваша логика проверки логина и пароля
+    {        
         if (username == "admin" && password == "admin")
         {
             var claims = new[]
@@ -32,8 +31,7 @@ public class AccountController : Controller
 
             return LocalRedirect(returnUrl);
         }
-
-        // Если логин или пароль неверны, вернем пользователя на страницу входа с сообщением об ошибке
+        
         ViewData["ErrorMessage"] = "Неверное имя пользователя или пароль.";
         return View();
     }
