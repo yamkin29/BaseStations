@@ -7,39 +7,19 @@ public class CalculatorController : Controller
         return View();
     }
 
-    [HttpPost]
-    public IActionResult Calculate(double operand1, double operand2, string operation)
+    /*public IActionResult Index(double lonDegrees1, double lonMinutes1, double lonSeconds1)
     {
-        double result = 0;
-        switch (operation)
-        {
-            case "add":
-                result = operand1 + operand2;
-                break;
-            case "subtract":
-                result = operand1 - operand2;
-                break;
-            case "multiply":
-                result = operand1 * operand2;
-                break;
-            case "divide":
-                if (operand2 != 0)
-                {
-                    result = operand1 / operand2;
-                }
-                else
-                {
-                    ViewBag.ErrorMessage = "Деление на ноль невозможно.";
-                    return View("Index");
-                }
-                break;
-        }
-        ViewBag.Result = result;
-        return View("Index");
-    }
+        double resultX = lonDegrees1 + (lonMinutes1 / 60) + (lonSeconds1 / 3600);
 
-    public IActionResult BackToPrevious()
+        // Здесь можно выполнить другие расчеты, если необходимо
+
+        ViewData["calculationResultX"] = resultX;
+
+        return View();
+    }*/
+
+    /*public IActionResult BackToPrevious()
     {        
         return Redirect(Request.Headers["Referer"].ToString());
-    }
+    }*/
 }

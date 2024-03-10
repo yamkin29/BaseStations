@@ -4,7 +4,6 @@
 
 <div class="d-flex justify-content-between align-items-center">
     <h1>Калькулятор</h1>
-
     <button id="backButton" class="btn btn-primary">Назад</button>
 </div>
 
@@ -12,31 +11,413 @@
     <table class="table">
         <thead>
             <tr>
-                <th colspan="3">ВВОДИМ координаты указанные в РИЧ:</th>
+                <th colspan="2">ВВОДИМ координаты указанные в РИЧ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>                
+                <td><span style="font-weight: bold; font-style: italic;">Lon</span></td>                
+                <td><span style="font-weight: bold; font-style: italic;">Lat</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="lonDegreesX" placeholder="Градусы" style="width: 60px;" onchange="calculateCoordinatesX()">
+                    <input type="text" name="lonMinutesX" placeholder="Минуты" style="width: 60px;" onchange="calculateCoordinatesX()">
+                    <input type="text" name="lonSecondsX" placeholder="Секунды" style="width: 60px;" onchange="calculateCoordinatesX()">
+                </td>
+                <td>
+                    <input type="text" name="latDegreesY" placeholder="Градусы" style="width: 60px;" onchange="calculateCoordinatesY()">
+                    <input type="text" name="latMinutesY" placeholder="Минуты" style="width: 60px;" onchange="calculateCoordinatesY()">
+                    <input type="text" name="latSecondsY" placeholder="Секунды" style="width: 60px;" onchange="calculateCoordinatesY()">
+                </td>
+            </tr>
+
+            <tr>
+                <td>                    
+                    <span style="font-weight: bold; font-style: italic;">Переводим координаты в десятичное значение:</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="text" name="calculationResultX" placeholder="Результат расчета X" style="width: 200px;">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" name="calculationResultY" placeholder="Результат расчета Y" style="width: 200px;" onchange="calculateValueB()">
+                </td>
+            </tr>
+
+            <tr>
+                <td>                    
+                    <span style="font-weight: bold; font-style: italic;">B - геодезическая широта определяемой точки, радиан</span>
+                </td>
+                <td>
+                    <input type="text" name="valueB" placeholder="" style="width: 200px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td>                    
+                    <span style="font-weight: bold; font-style: italic;">l - расстояние от точки до осевого меридиана зоны, радиан</span>
+                </td>
+                <td>
+                    <input type="text" name="valuel" placeholder="" style="width: 200px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td>                    
+                    <span style="font-weight: bold; font-style: italic;">n - номер шестиградусной зоны в проекции Гаусса-Крюгера</span>
+                </td>
+                <td>
+                    <input type="text" name="valuen" placeholder="" style="width: 200px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td>                    
+                    <span style="font-weight: bold; font-style: italic;">Получаем плоские координаты:</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="text" name="calculationResultFlatX" placeholder="Результат расчета X" style="width: 200px;">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" name="calculationResultFlatY" placeholder="Результат расчета Y" style="width: 200px;">
+                </td>
+            </tr>
+
+        </tbody>
+
+
+    </table>
+</div>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">ВВОДИМ измеренные координаты</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Lon</td>
-                <td>Lat</td>
+                <td><span style="font-weight: bold; font-style: italic;">Lon</span></td>
+                <td><span style="font-weight: bold; font-style: italic;">Lat</span></td>
             </tr>
             <tr>
-                <td>51 47 40</td>
-                <td>55 8 41</td>
+                <td>
+                    <input type="text" name="lonDegreesMeasured" placeholder="Градусы" style="width: 60px;" onchange="calculateCoordinatesMeasuredX()">
+                    <input type="text" name="lonMinutesMeasured" placeholder="Минуты" style="width: 60px;" onchange="calculateCoordinatesMeasuredX()">
+                    <input type="text" name="lonSecondsMeasured" placeholder="Секунды" style="width: 60px;" onchange="calculateCoordinatesMeasuredX()">
+                </td>
+                <td>
+                    <input type="text" name="latDegreesMeasured" placeholder="Градусы" style="width: 60px;" onchange="calculateCoordinatesMeasuredY()">
+                    <input type="text" name="latMinutesMeasured" placeholder="Минуты" style="width: 60px;" onchange="calculateCoordinatesMeasuredY()">
+                    <input type="text" name="latSecondsMeasured" placeholder="Секунды" style="width: 60px;" onchange="calculateCoordinatesMeasuredY()">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span style="font-weight: bold; font-style: italic;">Переводим координаты в десятичное значение:</span>
+                </td>
             </tr>
             <tr>
-                <td>O</td>
-                <td>'</td>
+                <td colspan="2">
+                    <input type="text" name="calculationResultMeasuredX" placeholder="Результат расчета X" style="width: 200px;">
+                </td>
             </tr>
             <tr>
-                <td colspan="3">Производим вычисления:</td>
-            </tr>            
+                <td colspan="2">
+                    <input type="text" name="calculationResultMeasuredY" placeholder="Результат расчета Y" style="width: 200px;" onchange="calculateValueMeasuredB()">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span style="font-weight: bold; font-style: italic;">B - геодезическая широта определяемой точки, радиан</span>
+                </td>
+                <td>
+                    <input type="text" name="valueMeasuredB" placeholder="" style="width: 200px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span style="font-weight: bold; font-style: italic;">l - расстояние от точки до осевого меридиана зоны, радиан</span>
+                </td>
+                <td>
+                    <input type="text" name="valueMeasuredL" placeholder="" style="width: 200px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span style="font-weight: bold; font-style: italic;">n - номер шестиградусной зоны в проекции Гаусса-Крюгера</span>
+                </td>
+                <td>
+                    <input type="text" name="valueMeasuredN" placeholder="" style="width: 200px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span style="font-weight: bold; font-style: italic;">Получаем плоские координаты:</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" name="calculationResultFlatMeasuredX" placeholder="Результат расчета X" style="width: 200px;">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" name="calculationResultFlatMeasuredY" placeholder="Результат расчета Y" style="width: 200px;">
+                </td>
+            </tr>
+
         </tbody>
     </table>
 </div>
 
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">Получаем точное расстояние</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" name="accurateMeasurement" placeholder="Результат расчета" style="width: 200px;">
+                </td>
+                <td><span style="font-weight: bold; font-style: italic;">Метров</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
 <script>
-    document.getElementById("backButton").onclick = function() {
+    document.getElementById("backButton").onclick = function () {
         history.back();
     };
 </script>
+
+<script>
+    function calculateCoordinatesX() {
+        var lonDegrees = parseFloat(document.getElementsByName("lonDegreesX")[0].value);
+        var lonMinutes = parseFloat(document.getElementsByName("lonMinutesX")[0].value);
+        var lonSeconds = parseFloat(document.getElementsByName("lonSecondsX")[0].value);
+
+        var resultX = lonDegrees + (lonMinutes / 60) + (lonSeconds / 3600);
+
+        document.getElementsByName("calculationResultX")[0].value = resultX;
+
+        calculateValueB();        
+    }
+</script>
+
+<script>
+    function calculateCoordinatesY() {
+        var lonDegrees = parseFloat(document.getElementsByName("latDegreesY")[0].value);
+        var lonMinutes = parseFloat(document.getElementsByName("latMinutesY")[0].value);
+        var lonSeconds = parseFloat(document.getElementsByName("latSecondsY")[0].value);
+
+        var resultY = lonDegrees + (lonMinutes / 60) + (lonSeconds / 3600);
+
+        document.getElementsByName("calculationResultY")[0].value = resultY;
+
+        calculateValueN();
+        calculateValueL();
+        calculateResultFlatX();
+        calculateResultFlatY();
+    }
+</script>
+
+<script>
+    function calculateValueB() {
+        var calculationResultX = parseFloat(document.getElementsByName("calculationResultX")[0].value);
+        var valueB = calculationResultX * Math.PI / 180;
+
+        document.getElementsByName("valueB")[0].value = valueB;
+    }
+</script>
+
+<script>
+    function calculateValueN() {
+        var calculationResultY = parseFloat(document.getElementsByName("calculationResultY")[0].value);
+        var valueN = Math.round((6 + calculationResultY) / 6);
+
+        document.getElementsByName("valuen")[0].value = valueN;
+    }
+</script>
+
+<script>
+    function calculateValueL() {
+        console.log("Вызвана функция calculateValueL");
+        var calculationResultY = parseFloat(document.getElementsByName("calculationResultY")[0].value);
+        var calculateValueN = parseFloat(document.getElementsByName("valuen")[0].value);
+        var valueL = (calculationResultY - (3 + 6 * (calculateValueN - 1))) / 57.29577951;
+
+        document.getElementsByName("valuel")[0].value = valueL;
+    }
+</script>
+
+<script>
+    function calculateResultFlatX() {
+        var valueB = parseFloat(document.getElementsByName("valueB")[0].value);
+        var valueL = parseFloat(document.getElementsByName("valuel")[0].value);
+
+        var sinValueB = Math.sin(valueB);
+        var sinValueL = Math.sin(valueL);
+        var sinValueB2 = Math.pow(sinValueB, 2);
+        var sinValueB4 = Math.pow(sinValueB, 4);
+        var sinValueB6 = Math.pow(sinValueB, 6);
+        var sinValueL2 = Math.pow(valueL, 2);
+
+        var result = 6367558.4968 * valueB - Math.sin(2 * valueB) * (16002.89 + 66.9607 * sinValueB2 + 0.3515 * sinValueB4 - sinValueL2 * (1594561.25 + 5336.535 * sinValueB2 + 26.79 * sinValueB4 + 0.149 * sinValueB6 + sinValueL2 * (672483.4 - 811219.9 * sinValueB2 + 5420 * sinValueB4 - 10.6 * sinValueB6 + sinValueL2 * (278194 - 830174 * sinValueB2 + 572434 * sinValueB4 - 16010 * sinValueB6 + sinValueL2 * (109500 - 574700 * sinValueB2 + 863700 * sinValueB4 - 398600 * sinValueB6)))));
+        
+        document.getElementsByName("calculationResultFlatX")[0].value = result;
+    }
+</script>
+
+<script>
+    function calculateResultFlatY() {
+        var valueB = parseFloat(document.getElementsByName("valueB")[0].value);
+        var valueL = parseFloat(document.getElementsByName("valuel")[0].value);
+        var valueN = parseFloat(document.getElementsByName("valuen")[0].value);
+
+        var sinValueB = Math.sin(valueB);
+        var sinValueB2 = Math.pow(sinValueB, 2);
+        var sinValueB4 = Math.pow(sinValueB, 4);
+        var sinValueB6 = Math.pow(sinValueB, 6);
+        var sinValueL2 = Math.pow(valueL, 2);
+
+        var result = (5 + 10 * valueN) * Math.pow(10, 5) + valueL * Math.cos(valueB) * (6378245 + 21346.1415 * sinValueB2 + 107.159 * sinValueB4 + 0.5977 * sinValueB6 + sinValueL2 * (1070204.16 - 2136826.66 * sinValueB2 + 17.98 * sinValueB4 - 11.99 * sinValueB6 + sinValueL2 * (270806 - 1523417 * sinValueB2 + 1327645 * sinValueB4 - 21701 * sinValueB6 + sinValueL2 * (79690 - 866190 * sinValueB2 + 1730360 * sinValueB4 - 945460 * sinValueB6))));
+
+        document.getElementsByName("calculationResultFlatY")[0].value = result;
+    }
+</script>
+
+<script>
+    function calculateCoordinatesMeasuredX() {
+        var lonDegrees = parseFloat(document.getElementsByName("lonDegreesMeasured")[0].value);
+        var lonMinutes = parseFloat(document.getElementsByName("lonMinutesMeasured")[0].value);
+        var lonSeconds = parseFloat(document.getElementsByName("lonSecondsMeasured")[0].value);
+
+        var resultX = lonDegrees + (lonMinutes / 60) + (lonSeconds / 3600);
+
+        document.getElementsByName("calculationResultMeasuredX")[0].value = resultX;
+
+        calculateValueMeasuredB();
+    }
+</script>
+
+<script>
+    function calculateCoordinatesMeasuredY() {
+        var lonDegrees = parseFloat(document.getElementsByName("latDegreesMeasured")[0].value);
+        var lonMinutes = parseFloat(document.getElementsByName("latMinutesMeasured")[0].value);
+        var lonSeconds = parseFloat(document.getElementsByName("latSecondsMeasured")[0].value);
+
+        var resultY = lonDegrees + (lonMinutes / 60) + (lonSeconds / 3600);
+
+        document.getElementsByName("calculationResultMeasuredY")[0].value = resultY;
+
+        calculateValueMeasuredN();
+        calculateValueMeasuredL();
+        calculateResultFlatMeasuredX();
+        calculateResultFlatMeasuredY();
+        accurateMeasurementValue();
+    }
+</script>
+
+<script>
+    function calculateValueMeasuredB() {
+        var calculationResultX = parseFloat(document.getElementsByName("calculationResultMeasuredX")[0].value);
+        var valueB = calculationResultX * Math.PI / 180;
+
+        document.getElementsByName("valueMeasuredB")[0].value = valueB;
+    }
+</script>
+
+<script>
+    function calculateValueMeasuredN() {
+        var calculationResultY = parseFloat(document.getElementsByName("calculationResultMeasuredY")[0].value);
+        var valueN = Math.round((6 + calculationResultY) / 6);
+
+        document.getElementsByName("valueMeasuredN")[0].value = valueN;
+    }
+</script>
+
+<script>
+    function calculateValueMeasuredL() {
+        console.log("Вызвана функция calculateValueMeasuredL");
+        var calculationResultY = parseFloat(document.getElementsByName("calculationResultMeasuredY")[0].value);
+        var calculateValueN = parseFloat(document.getElementsByName("valueMeasuredN")[0].value);
+        var valueL = (calculationResultY - (3 + 6 * (calculateValueN - 1))) / 57.29577951;
+
+        document.getElementsByName("valueMeasuredL")[0].value = valueL;
+    }
+</script>
+
+<script>
+    function calculateResultFlatMeasuredX() {
+        var valueB = parseFloat(document.getElementsByName("valueMeasuredB")[0].value);
+        var valueL = parseFloat(document.getElementsByName("valueMeasuredL")[0].value);
+
+        var sinValueB = Math.sin(valueB);
+        var sinValueL = Math.sin(valueL);
+        var sinValueB2 = Math.pow(sinValueB, 2);
+        var sinValueB4 = Math.pow(sinValueB, 4);
+        var sinValueB6 = Math.pow(sinValueB, 6);
+        var sinValueL2 = Math.pow(valueL, 2);
+
+        var result = 6367558.4968 * valueB - Math.sin(2 * valueB) * (16002.89 + 66.9607 * sinValueB2 + 0.3515 * sinValueB4 - sinValueL2 * (1594561.25 + 5336.535 * sinValueB2 + 26.79 * sinValueB4 + 0.149 * sinValueB6 + sinValueL2 * (672483.4 - 811219.9 * sinValueB2 + 5420 * sinValueB4 - 10.6 * sinValueB6 + sinValueL2 * (278194 - 830174 * sinValueB2 + 572434 * sinValueB4 - 16010 * sinValueB6 + sinValueL2 * (109500 - 574700 * sinValueB2 + 863700 * sinValueB4 - 398600 * sinValueB6)))));
+
+        document.getElementsByName("calculationResultFlatMeasuredX")[0].value = result;
+    }
+</script>
+
+<script>
+    function calculateResultFlatMeasuredY() {
+        var valueB = parseFloat(document.getElementsByName("valueMeasuredB")[0].value);
+        var valueL = parseFloat(document.getElementsByName("valueMeasuredL")[0].value);
+        var valueN = parseFloat(document.getElementsByName("valueMeasuredN")[0].value);
+
+        var sinValueB = Math.sin(valueB);
+        var sinValueB2 = Math.pow(sinValueB, 2);
+        var sinValueB4 = Math.pow(sinValueB, 4);
+        var sinValueB6 = Math.pow(sinValueB, 6);
+        var sinValueL2 = Math.pow(valueL, 2);
+
+        var result = (5 + 10 * valueN) * Math.pow(10, 5) + valueL * Math.cos(valueB) * (6378245 + 21346.1415 * sinValueB2 + 107.159 * sinValueB4 + 0.5977 * sinValueB6 + sinValueL2 * (1070204.16 - 2136826.66 * sinValueB2 + 17.98 * sinValueB4 - 11.99 * sinValueB6 + sinValueL2 * (270806 - 1523417 * sinValueB2 + 1327645 * sinValueB4 - 21701 * sinValueB6 + sinValueL2 * (79690 - 866190 * sinValueB2 + 1730360 * sinValueB4 - 945460 * sinValueB6))));
+
+        document.getElementsByName("calculationResultFlatMeasuredY")[0].value = result;
+    }
+</script>
+
+<script>
+    function accurateMeasurementValue() {
+        var calculationResultFlatY = parseFloat(document.getElementsByName("calculationResultFlatY")[0].value);
+        var calculationResultFlatX = parseFloat(document.getElementsByName("calculationResultFlatX")[0].value);
+        
+        var calculationResultFlatMeasuredY = parseFloat(document.getElementsByName("calculationResultFlatMeasuredY")[0].value);
+        var calculationResultFlatMeasuredX = parseFloat(document.getElementsByName("calculationResultFlatMeasuredX")[0].value);
+
+        var result = Math.sqrt(Math.pow(parseFloat(document.getElementsByName("calculationResultFlatMeasuredX")[0].value) - parseFloat(document.getElementsByName("calculationResultFlatX")[0].value), 2) + Math.pow(parseFloat(document.getElementsByName("calculationResultFlatMeasuredY")[0].value) - parseFloat(document.getElementsByName("calculationResultFlatY")[0].value), 2));
+
+
+        document.getElementsByName("accurateMeasurement")[0].value = result;
+    }
+</script>
+
+
