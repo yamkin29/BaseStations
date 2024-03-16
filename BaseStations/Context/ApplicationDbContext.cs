@@ -10,5 +10,7 @@ namespace BaseStations.Context
         }
 
         public DbSet<BaseStation> BaseStations { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -11,6 +11,10 @@
         <a href="@Url.Action("Calculator", "BaseStations")" class="btn btn-primary">Калькулятор</a>
     </div>
 
+    <div class="ml-lg-4">
+        <a href="@Url.Action("AddUsers", "BaseStations")" class="btn btn-primary">Добавить пользователей</a>
+    </div>
+
     @if (User.Identity.IsAuthenticated)
     {
         <form asp-action="Logout" asp-controller="Account" method="post">

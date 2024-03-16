@@ -174,6 +174,12 @@ namespace BaseStations.Controllers
             return View();
         }
 
+        public async Task<IActionResult> AddUsers()
+        {
+            var users = await _context.Users.ToListAsync();
+            return View(users);
+        }
+
 
         private bool BaseStationExists(int id)
         {
