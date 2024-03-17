@@ -33,8 +33,9 @@ namespace BaseStations.Controllers
                 var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Login == userModel.Login);
                 if (existingUser != null)
                 {
+                    var users = await _context.Users.ToListAsync(); // Получаем полный список пользователей
                     ModelState.AddModelError("Login", "Пользователь с таким логином уже существует.");
-                    return View("AddUsers", userModel);
+                    return View("AddUsers", users);
                 }
 
                 _context.Add(userModel);
@@ -43,7 +44,10 @@ namespace BaseStations.Controllers
                 // Возвращаем представление с новым списком пользователей
                 return RedirectToAction(nameof(AddUsers));
             }
-            return View("AddUsers", userModel);
+            
+            // Если модель недействительна, возвращаем представление с текущей моделью
+            var currentUsers = await _context.Users.ToListAsync();
+            return View("AddUsers", currentUsers);
         }
 
         // POST: Users/Delete
@@ -61,12 +65,6 @@ namespace BaseStations.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(AddUsers));
-        }
-
-        // GET: Users/GoToBaseStationIndex
-        public IActionResult GoToBaseStationIndex()
-        {
-            return RedirectToAction("Index", "BaseStation");
         }
     }
 }

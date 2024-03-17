@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BaseStations.Context;
 using BaseStations.Models;
@@ -185,7 +180,5 @@ namespace BaseStations.Controllers
         {
             return _context.BaseStations.Any(e => e.Id == id);
         }
-
-
     }
 }

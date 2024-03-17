@@ -6,13 +6,14 @@
 
 <div class="d-flex justify-content-between align-items-center">
     <h1>Добавить нового пользователя</h1>
-    <a href="@Url.Action("GoToBaseStationIndex", "Users")" class="btn btn-primary">Назад</a>
+    <a href="@Url.Action("Index", "BaseStations")" class="btn btn-primary">Назад</a>
 </div>
 
 <form asp-controller="Users" asp-action="Add" method="post">
     <div class="form-group">
         <label for="login">Логин:</label>
         <input type="text" id="login" name="login" class="form-control" style="width: 200px;" maxlength="15" />
+        @Html.ValidationMessageFor(model => model.FirstOrDefault().Login,"", new {@class = "text-danger"})
     </div>
     <div class="form-group">
         <label for="password">Пароль:</label>
@@ -23,7 +24,6 @@
     </div>
 </form>
 
-<!-- Отступ между кнопкой Сохранить и таблицей -->
 <div style="margin-top: 20px;"></div>
 
 @if (Model != null && Model.Any())
@@ -37,6 +37,7 @@
                 <th>
                     Пароль
                 </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
